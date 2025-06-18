@@ -1,0 +1,57 @@
+#include <stdio.h>
+
+int main() {
+    int arr[10] = {1, 2, 3, 4}; // Increased array size to accommodate insertion
+    int i, element, index, size = 4; // Properly initialized size
+    
+    // Taking user input for insertion
+    printf("Enter the element to insert: ");
+    scanf("%d", &element);
+    printf("Enter the index to insert: ");
+    scanf("%d", &index);
+
+    // Check index validity for insertion
+    if (index < 0 || index > size) {
+        printf("Invalid index for insertion!\n");
+        return 1;
+    }
+
+    // Shifting elements to make space for the new element
+    for (i = size; i > index; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[index] = element; // Insert the new element
+    size++; // Update size
+
+    // Display array after insertion
+    printf("Array after insertion: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    // Taking user input for deletion
+    printf("Enter the index to delete: ");
+    scanf("%d", &index);
+
+    // Check index validity for deletion
+    if (index < 0 || index >= size) {
+        printf("Invalid index for deletion!\n");
+        return 1;
+    }
+
+    // Shifting elements to remove the element at the given index
+    for (i = index; i < size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    size--; // Update size after deletion
+
+    // Display array after deletion
+    printf("Array after deletion: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
